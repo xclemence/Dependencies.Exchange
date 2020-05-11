@@ -20,6 +20,9 @@ namespace Dependencies.Exchange.Graph
 
         public async Task AddAsync(AssemblyExchange assembly, IList<AssemblyExchange> dependencies)
         {
+            if (assembly is null)
+                throw new ArgumentNullException(nameof(assembly));
+
             var assemblyDtos = dependencies.Select(x => x.ToDto()).ToList();
 
             assemblyDtos.Add(assembly.ToDto());
@@ -27,31 +30,31 @@ namespace Dependencies.Exchange.Graph
             var json = JsonConvert.SerializeObject(assemblyDtos);
             using var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await client.PostAsync(@$"{settings.ServiceUri}/api/assembly/add", data);
+            HttpResponseMessage response = await client.PostAsync(new Uri(@$"{settings.ServiceUri}/api/assembly/add"), data).ConfigureAwait(false);
 
             response.EnsureSuccessStatusCode();
         }
 
         public async Task<IList<string>> SearchAsync(string name)
         {
-            HttpResponseMessage response = await client.GetAsync(@$"{settings.ServiceUri}/api/assembly/search/{name}");
+            HttpResponseMessage response = await client.GetAsync(new Uri(@$"{settings.ServiceUri}/api/assembly/search/{name}")).ConfigureAwait(false); ;
             response.EnsureSuccessStatusCode();
 
             var restult = response.Content;
 
-            var result = JsonConvert.DeserializeObject<List<AssemblyDto>>(await response.Content.ReadAsStringAsync());
+            var result = JsonConvert.DeserializeObject<List<AssemblyDto>>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
 
             return result.Select(x => x.Name).ToList();
         }
 
         public async Task<(AssemblyExchange assembly, IList<AssemblyExchange> dependencies)> GetAsync(string name)
         {
-            HttpResponseMessage response = await client.GetAsync(@$"{settings.ServiceUri}/api/assembly/{name}");
+            HttpResponseMessage response = await client.GetAsync(new Uri(@$"{settings.ServiceUri}/api/assembly/{name}")).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
 
             var restult = response.Content;
 
-            var result = JsonConvert.DeserializeObject<List<AssemblyDto>>(await response.Content.ReadAsStringAsync());
+            var result = JsonConvert.DeserializeObject<List<AssemblyDto>>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
 
             var assemblies = result.Select(x => x.ToExchange()).ToList();
 

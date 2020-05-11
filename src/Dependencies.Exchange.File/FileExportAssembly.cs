@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Dependencies.Exchange.Base;
@@ -11,8 +12,8 @@ namespace Dependencies.Exchange.File
 {
     class ExportModel 
     {
-        public AssemblyExchange Assembly { get; set; }
-        public IList<AssemblyExchange> Dependencies { get; set; }
+        public AssemblyExchange Assembly { get; set; } = null!;
+        public IList<AssemblyExchange> Dependencies { get; set; } = null!;
 
     }
 
@@ -25,6 +26,9 @@ namespace Dependencies.Exchange.File
                                 IList<AssemblyExchange> dependencies, 
                                 Func<UserControl, IExchangeViewModel<AssemblyExchangeContent>, Task<AssemblyExchangeContent>> _)
         {
+            if (assembly is null)
+                throw new ArgumentNullException(nameof(assembly));
+
             var saveFileDialog = new SaveFileDialog()
             {
                 FileName = assembly.ShortName,

@@ -20,10 +20,13 @@ namespace Dependencies.Exchange.Graph
 
         public async Task<AssemblyExchangeContent> ImportAsync(Func<UserControl, IExchangeViewModel<AssemblyExchangeContent>, Task<AssemblyExchangeContent>> showDialog)
         {
+            if (showDialog is null)
+                throw new ArgumentNullException(nameof(showDialog));
+
             var dataContext = new OpenAssemblyViewModel(settings);
             var window = new OpenAssemblyView();
             
-            var result = await showDialog(window, dataContext);
+            var result = await showDialog(window, dataContext).ConfigureAwait(false);
 
             return result;
         }

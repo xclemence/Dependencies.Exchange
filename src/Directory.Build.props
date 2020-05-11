@@ -6,7 +6,7 @@
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
     <NeutralLanguage>en</NeutralLanguage>
-    <Copyright>Copyright © 2018 - $([System.DateTime]::Today.ToString(yyyy)) Xavier CLEMENCE</Copyright>
+    <Copyright>Copyright © $([System.DateTime]::Today.ToString(yyyy)) Xavier CLEMENCE</Copyright>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">

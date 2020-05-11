@@ -20,7 +20,7 @@ namespace Dependencies.Exchange.Graph.ViewModels
         {
             this.settings = settings;
 
-            SearchCommand = new Command(async () => await SearchAsync(), () => !string.IsNullOrEmpty(SearchText));
+            SearchCommand = new Command(async () => await SearchAsync().ConfigureAwait(false), () => !string.IsNullOrEmpty(SearchText));
         }
 
         public ICommand SearchCommand { get; }
@@ -51,17 +51,17 @@ namespace Dependencies.Exchange.Graph.ViewModels
 
         private async Task SearchAsync()
         {
-            await RunAsync?.Invoke(async () =>
+            await RunAsync.Invoke(async () =>
             {
               var services = new AssemblyGraphService(settings.GetSettings());
-              AvailableAssemblies = await services.SearchAsync(SearchText);
-            });
+              AvailableAssemblies = await services.SearchAsync(SearchText).ConfigureAwait(false);
+            }).ConfigureAwait(false);
         }
 
         public async Task<AssemblyExchangeContent> LoadAsync()
         {
             var service = new AssemblyGraphService(settings.GetSettings());
-            var (assembly, dependencies) = await service.GetAsync(SelectedAssembly);
+            var (assembly, dependencies) = await service.GetAsync(SelectedAssembly).ConfigureAwait(false);
 
             return new AssemblyExchangeContent { Assembly = assembly, Dependencies = dependencies };
         }

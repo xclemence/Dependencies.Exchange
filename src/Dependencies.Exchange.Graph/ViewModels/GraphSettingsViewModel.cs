@@ -12,7 +12,7 @@ namespace Dependencies.Exchange.Graph.ViewModels
         {
             this.settingServices = settingServices;
 
-            settings = settingServices.GetSettings();
+            settings = settingServices?.GetSettings();
         }
 
         public string Uri
