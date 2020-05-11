@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Build][github-actions-badge]][github-actions]
 
-Tis project contains libraries to exchange assemblies dependencies (import/export)
+Tis project contains libraries to exchange assemblies dependencies (import/export).
 
 These libraries are used in *[Dependecy Viewer][dependencies-viewer-url]*.
 
@@ -21,6 +21,8 @@ This import/export mechanism saves one assembly and own dependencies in a JSON f
 ### Graph
 
 This import/export call *[Dependeces Graph Services][dependencies-graph-services-url]* to store assembly and own dependencies in a database.
+
+For assembly import, the library provides a search screen. This screen is style agnostic.
 
 [dependencies-viewer-url]:              https://github.com/xclemence/Dependencies.Viewer
 [dependencies-graph-services-url]:      https://github.com/xclemence/dependencies-graph-services
