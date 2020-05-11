@@ -1,0 +1,22 @@
+dictionaries:
+  - en
+  - en_GB
+
+# Any files/folders we should ignore?
+excluded_files:
+  - "**/bin/**/*"
+  - "**/obj/**/*"
+  - ".typo-ci.yml"
+  - ".github/**/*"
+  - ".gitignore"
+
+# Any typos we should ignore?
+excluded_words:
+  - typoci
+  - sln
+  - dotnetcore
+  - Dto
+  - csharp
+  
+# Would you like filenames to also be spellchecked?
+spellcheck_filenames: true
