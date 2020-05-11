@@ -1,8 +1,7 @@
 name:  WPF .NET Core
 
 on:
-  push:
-    branches: [*]
+  push
   pull_request:
     branches: [ master ]
 
