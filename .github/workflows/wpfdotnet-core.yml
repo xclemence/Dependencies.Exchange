@@ -1,9 +1,20 @@
 name:  WPF .NET Core
 
-on:
-  push
+on: 
+  push:
+    paths-ignore:
+      - '**/doc/**'
+      - '**/README.md'
+      - '**/LICENSE'
+      - '**/.typo-ci.yml'
   pull_request:
-    branches: [ master ]
+    paths-ignore:
+      - '**/doc/**'
+      - '**/README.md'
+      - '**/LICENSE'
+      - '**/.typo-ci.yml'
+    branches:
+      - master
 
 jobs:
 
