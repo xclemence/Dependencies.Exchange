@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace Dependencies.Exchange.Base.Models
 {
-    
+
     [DebuggerDisplay("Name = {ShortName}, Version = {Version}, FullName = {Name}")]
     public class AssemblyExchange
     {

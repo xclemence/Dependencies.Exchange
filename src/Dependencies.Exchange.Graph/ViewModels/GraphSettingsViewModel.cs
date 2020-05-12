@@ -18,7 +18,7 @@ namespace Dependencies.Exchange.Graph.ViewModels
         public string Uri
         {
             get => settings.ServiceUri;
-            set 
+            set
             {
                 settings.ServiceUri = value;
                 settingServices.SaveSettings(settings);

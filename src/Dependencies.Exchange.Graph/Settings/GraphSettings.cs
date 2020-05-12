@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Dependencies.Exchange.Base;
+﻿using Dependencies.Exchange.Base;
 
 namespace Dependencies.Exchange.Graph.Settings
 {
