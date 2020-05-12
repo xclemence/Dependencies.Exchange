@@ -53,8 +53,8 @@ namespace Dependencies.Exchange.Graph.ViewModels
         {
             await RunAsync.Invoke(async () =>
             {
-              var services = new AssemblyGraphService(settings.GetSettings());
-              AvailableAssemblies = await services.SearchAsync(SearchText).ConfigureAwait(false);
+                var services = new AssemblyGraphService(settings.GetSettings());
+                AvailableAssemblies = await services.SearchAsync(SearchText).ConfigureAwait(false);
             }).ConfigureAwait(false);
         }
 

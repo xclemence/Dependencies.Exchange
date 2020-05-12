@@ -25,7 +25,7 @@ namespace Dependencies.Exchange.Graph
 
             var dataContext = new OpenAssemblyViewModel(settings);
             var window = new OpenAssemblyView();
-            
+
             var result = await showDialog(window, dataContext).ConfigureAwait(false);
 
             return result;

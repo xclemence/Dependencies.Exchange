@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Dependencies.Exchange.Base;
@@ -10,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace Dependencies.Exchange.File
 {
-    class ExportModel 
+    internal class ExportModel
     {
         public AssemblyExchange Assembly { get; set; } = null!;
         public IList<AssemblyExchange> Dependencies { get; set; } = null!;
@@ -23,7 +22,7 @@ namespace Dependencies.Exchange.File
         public bool IsReady => true;
 
         public Task ExportAsync(AssemblyExchange assembly,
-                                IList<AssemblyExchange> dependencies, 
+                                IList<AssemblyExchange> dependencies,
                                 Func<UserControl, IExchangeViewModel<AssemblyExchangeContent>, Task<AssemblyExchangeContent>> _)
         {
             if (assembly is null)
@@ -32,7 +31,7 @@ namespace Dependencies.Exchange.File
             var saveFileDialog = new SaveFileDialog()
             {
                 FileName = assembly.ShortName,
-                DefaultExt =".json",
+                DefaultExt = ".json",
                 Filter = "JavaScript Object Notation (.json)|*.json"
             };
 
@@ -41,7 +40,7 @@ namespace Dependencies.Exchange.File
             if (!(result ?? false))
                 return Task.CompletedTask;
 
-            var serializeObject = JsonConvert.SerializeObject(new ExportModel { Assembly = assembly, Dependencies = dependencies }, Formatting.Indented );
+            var serializeObject = JsonConvert.SerializeObject(new ExportModel { Assembly = assembly, Dependencies = dependencies }, Formatting.Indented);
 
             System.IO.File.WriteAllText(saveFileDialog.FileName, serializeObject);
 

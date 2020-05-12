@@ -1,7 +1,6 @@
-﻿using Dependencies.Exchange.Base;
+﻿using System.IO;
+using Dependencies.Exchange.Base;
 using Newtonsoft.Json;
-using System;
-using System.IO;
 
 namespace Dependencies.Exchange.Graph.Settings
 {

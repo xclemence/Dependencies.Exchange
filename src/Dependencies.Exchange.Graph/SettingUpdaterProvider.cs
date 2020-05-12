@@ -10,10 +10,8 @@ namespace Dependencies.Exchange.Graph
     {
         private readonly ISettingServices<GraphSettings> settingServices;
 
-        public SettingUpdaterProvider(ISettingServices<GraphSettings> settingServices)
-        {
+        public SettingUpdaterProvider(ISettingServices<GraphSettings> settingServices) =>
             this.settingServices = settingServices;
-        }
 
         public string Name => "Graph Services";
 

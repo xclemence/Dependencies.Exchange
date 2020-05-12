@@ -30,14 +30,14 @@ namespace Dependencies.Exchange.Graph
             var json = JsonConvert.SerializeObject(assemblyDtos);
             using var data = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await client.PostAsync(new Uri(@$"{settings.ServiceUri}/api/assembly/add"), data).ConfigureAwait(false);
+            var response = await client.PostAsync(new Uri(@$"{settings.ServiceUri}/api/assembly/add"), data).ConfigureAwait(false);
 
             response.EnsureSuccessStatusCode();
         }
 
         public async Task<IList<string>> SearchAsync(string name)
         {
-            HttpResponseMessage response = await client.GetAsync(new Uri(@$"{settings.ServiceUri}/api/assembly/search/{name}")).ConfigureAwait(false); ;
+            var response = await client.GetAsync(new Uri(@$"{settings.ServiceUri}/api/assembly/search/{name}")).ConfigureAwait(false); ;
             response.EnsureSuccessStatusCode();
 
             var restult = response.Content;
@@ -49,7 +49,7 @@ namespace Dependencies.Exchange.Graph
 
         public async Task<(AssemblyExchange assembly, IList<AssemblyExchange> dependencies)> GetAsync(string name)
         {
-            HttpResponseMessage response = await client.GetAsync(new Uri(@$"{settings.ServiceUri}/api/assembly/{name}")).ConfigureAwait(false);
+            var response = await client.GetAsync(new Uri(@$"{settings.ServiceUri}/api/assembly/{name}")).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
 
             var restult = response.Content;
