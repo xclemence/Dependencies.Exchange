@@ -9,14 +9,14 @@ using Dependencies.Exchange.Graph.Views;
 
 namespace Dependencies.Exchange.Graph
 {
-    public class GraphImportAssembly : IImportAssembly
+    public class GraphImportService : IImportAssembly
     {
         private readonly ISettingServices<GraphSettings> settings;
 
         public string Name => "Graph";
         public bool IsReady => true;
 
-        public GraphImportAssembly(ISettingServices<GraphSettings> settings) => this.settings = settings;
+        public GraphImportService(ISettingServices<GraphSettings> settings) => this.settings = settings;
 
         public async Task<AssemblyExchangeContent> ImportAsync(Func<UserControl, IExchangeViewModel<AssemblyExchangeContent>, Task<AssemblyExchangeContent>> showDialog)
         {

@@ -42,7 +42,7 @@ namespace Dependencies.Exchange.Graph
 
             var restult = response.Content;
 
-            var result = JsonConvert.DeserializeObject<List<AssemblyDto>>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+            var result = JsonConvert.DeserializeObject<List<GraphAssemblyDto>>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
 
             return result.Select(x => x.Name).ToList();
         }
@@ -54,7 +54,7 @@ namespace Dependencies.Exchange.Graph
 
             var restult = response.Content;
 
-            var result = JsonConvert.DeserializeObject<List<AssemblyDto>>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
+            var result = JsonConvert.DeserializeObject<List<GraphAssemblyDto>>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
 
             var assemblies = result.Select(x => x.ToExchange()).ToList();
 

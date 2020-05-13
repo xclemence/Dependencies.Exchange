@@ -25,7 +25,7 @@ namespace Dependencies.Exchange.Graph.ViewModels
 
         public ICommand SearchCommand { get; }
 
-        public bool CanLoad => !string.IsNullOrEmpty(SelectedAssembly);
+        public bool CanValidate => !string.IsNullOrEmpty(SelectedAssembly);
 
         public string SearchText
         {
@@ -58,7 +58,7 @@ namespace Dependencies.Exchange.Graph.ViewModels
             }).ConfigureAwait(false);
         }
 
-        public async Task<AssemblyExchangeContent> LoadAsync()
+        public async Task<AssemblyExchangeContent> ValidateAsync()
         {
             var service = new AssemblyGraphService(settings.GetSettings());
             var (assembly, dependencies) = await service.GetAsync(SelectedAssembly).ConfigureAwait(false);

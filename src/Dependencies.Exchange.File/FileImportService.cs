@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace Dependencies.Exchange.File
 {
-    public class FileImportAssembly : IImportAssembly
+    public class FileImportService : IImportAssembly
     {
         public string Name => "File";
         public bool IsReady => true;

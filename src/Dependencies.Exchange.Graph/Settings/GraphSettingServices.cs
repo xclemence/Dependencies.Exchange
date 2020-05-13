@@ -4,12 +4,12 @@ using Newtonsoft.Json;
 
 namespace Dependencies.Exchange.Graph.Settings
 {
-    public class FileSettingServices : ISettingServices<GraphSettings>
+    public class GraphSettingServices : ISettingServices<GraphSettings>
     {
 
-        public FileSettingServices()
+        public GraphSettingServices()
         {
-            var assemblyLocation = typeof(FileSettingServices).Assembly.Location;
+            var assemblyLocation = typeof(GraphSettingServices).Assembly.Location;
 
             Filename = $@"{ Path.GetDirectoryName(assemblyLocation) }\graph-setting.json";
         }

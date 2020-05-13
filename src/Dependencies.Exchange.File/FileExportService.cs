@@ -16,14 +16,14 @@ namespace Dependencies.Exchange.File
 
     }
 
-    public class FileExportAssembly : IExportAssembly
+    public class FileExportService : IExportAssembly
     {
         public string Name => "File";
         public bool IsReady => true;
 
-        public Task ExportAsync(AssemblyExchange assembly,
-                                IList<AssemblyExchange> dependencies,
-                                Func<UserControl, IExchangeViewModel<AssemblyExchangeContent>, Task<AssemblyExchangeContent>> _)
+        public Task<bool> ExportAsync(AssemblyExchange assembly,
+                                      IList<AssemblyExchange> dependencies,
+                                      Func<UserControl, IExchangeViewModel<bool>, Task<bool>> _)
         {
             if (assembly is null)
                 throw new ArgumentNullException(nameof(assembly));
@@ -38,13 +38,13 @@ namespace Dependencies.Exchange.File
             var result = saveFileDialog.ShowDialog();
 
             if (!(result ?? false))
-                return Task.CompletedTask;
+                return Task.FromResult(false);
 
             var serializeObject = JsonConvert.SerializeObject(new ExportModel { Assembly = assembly, Dependencies = dependencies }, Formatting.Indented);
 
             System.IO.File.WriteAllText(saveFileDialog.FileName, serializeObject);
 
-            return Task.CompletedTask;
+            return Task.FromResult(true);
         }
     }
 }

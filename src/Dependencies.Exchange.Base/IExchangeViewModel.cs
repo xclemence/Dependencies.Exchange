@@ -5,12 +5,13 @@ namespace Dependencies.Exchange.Base
 {
     public interface IExchangeViewModel<T>
     {
-        bool CanLoad { get; }
+        bool CanValidate { get; }
 
         Func<Func<Task>, Task> RunAsync { get; set; }
+
         string Title { get; }
 
-        Task<T> LoadAsync();
+        Task<T> ValidateAsync();
     }
 
 }

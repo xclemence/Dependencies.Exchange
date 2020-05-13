@@ -5,7 +5,7 @@ namespace Dependencies.Exchange.Graph.Extensions
 {
     internal static class AssemblyConverters
     {
-        internal static AssemblyDto ToDto(this AssemblyExchange assembly) => new AssemblyDto
+        internal static GraphAssemblyDto ToDto(this AssemblyExchange assembly) => new GraphAssemblyDto
         {
             AssembliesReferenced = assembly.AssembliesReferenced.ToList(),
             CreationDate = assembly.CreationDate,
@@ -22,7 +22,7 @@ namespace Dependencies.Exchange.Graph.Extensions
             HasEntryPoint = assembly.HasEntryPoint
         };
 
-        internal static AssemblyExchange ToExchange(this AssemblyDto assembly) => new AssemblyExchange
+        internal static AssemblyExchange ToExchange(this GraphAssemblyDto assembly) => new AssemblyExchange
         {
             AssembliesReferenced = assembly.AssembliesReferenced.ToList(),
             CreationDate = assembly.CreationDate,

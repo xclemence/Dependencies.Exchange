@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Dependencies.Exchange.Graph
 {
-    public class AssemblyDto
+    public class GraphAssemblyDto
     {
         public string Name { get; set; }
 

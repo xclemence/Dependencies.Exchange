@@ -8,8 +8,8 @@ namespace Dependencies.Exchange.Base
 {
     public interface IExportAssembly : IExchangeSevice
     {
-        Task ExportAsync(AssemblyExchange assembly,
-                         IList<AssemblyExchange> dependencies,
-                         Func<UserControl, IExchangeViewModel<AssemblyExchangeContent>, Task<AssemblyExchangeContent>> showDialog);
+        Task<bool> ExportAsync(AssemblyExchange assembly,
+                               IList<AssemblyExchange> dependencies,
+                               Func<UserControl, IExchangeViewModel<bool>, Task<bool>> showDialog);
     }
 }
