@@ -17,6 +17,8 @@ excluded_words:
   - dotnetcore
   - Dto
   - csharp
+  - xaml
+  - Fwk
   
 # Would you like filenames to also be spellchecked?
 spellcheck_filenames: true
