@@ -1,6 +1,7 @@
 ﻿namespace Dependencies.Exchange.Base
 {
-    public interface IExchangeServiceFactory<T>
+    public interface IExchangeServiceFactory<out T>
+        where T : class
     {
         T Create();
     }
