@@ -3,7 +3,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <OutputType>Library</OutputType>
     <UseWpf>true</UseWpf>
-    <AnalysisLevel>latest</AnalysisLevel>
+    <AnalysisLevel>5.0</AnalysisLevel>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
