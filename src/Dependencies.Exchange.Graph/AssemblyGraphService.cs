@@ -40,8 +40,6 @@ namespace Dependencies.Exchange.Graph
             var response = await client.GetAsync(new Uri(@$"{settings.ServiceUri}/api/assembly/search/{name}")).ConfigureAwait(false); ;
             response.EnsureSuccessStatusCode();
 
-            var restult = response.Content;
-
             var result = JsonConvert.DeserializeObject<List<GraphAssemblyDto>>(await response.Content.ReadAsStringAsync().ConfigureAwait(false));
 
             return result.Select(x => x.Name).ToList();

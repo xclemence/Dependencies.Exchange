@@ -8,19 +8,19 @@ namespace Dependencies.Exchange.Base.Models
     [DebuggerDisplay("Name = {ShortName}, Version = {Version}, FullName = {Name}")]
     public record AssemblyExchange
     {
-        public string Name { get; init; }
+        public string Name { get; init; } = string.Empty;
 
-        public string ShortName { get; init; } 
+        public string ShortName { get; init; } = string.Empty;
 
         public bool IsNative { get; init; }
 
-        public string Version { get; init; } 
+        public string Version { get; init; } = string.Empty;
 
-        public string Creator { get; init; } 
+        public string Creator { get; init; } = string.Empty;
 
-        public string TargetFramework { get; init; } 
+        public string TargetFramework { get; init; } = string.Empty;
 
-        public string TargetProcessor { get; init; } 
+        public string TargetProcessor { get; init; } = string.Empty;
 
         public bool? IsDebug { get; init; }
 
@@ -33,6 +33,6 @@ namespace Dependencies.Exchange.Base.Models
         public bool IsLocal { get; init; }
         public bool HasEntryPoint { get; init; }
 
-        public List<string> AssembliesReferenced { get; init; } = new List<string>();
+        public List<string> AssembliesReferenced { get; init; } = new ();
     }
 }

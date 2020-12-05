@@ -5,7 +5,7 @@ namespace Dependencies.Exchange.Graph.ViewModels
 {
     public class GraphSettingsViewModel
     {
-        private readonly GraphSettings settings;
+        private readonly GraphSettings? settings;
         private readonly ISettingServices<GraphSettings> settingServices;
 
         public GraphSettingsViewModel(ISettingServices<GraphSettings> settingServices)
@@ -15,11 +15,14 @@ namespace Dependencies.Exchange.Graph.ViewModels
             settings = settingServices?.GetSettings();
         }
 
-        public string Uri
+        public string? Uri
         {
-            get => settings.ServiceUri;
+            get => settings?.ServiceUri;
             set
             {
+                if (settings == null || value == null)
+                    return;
+
                 settings.ServiceUri = value;
                 settingServices.SaveSettings(settings);
             }

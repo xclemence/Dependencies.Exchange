@@ -4,6 +4,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <Nullable>enable</Nullable>
     <UseWpf>true</UseWpf>
     <OutputType>Library</OutputType>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>

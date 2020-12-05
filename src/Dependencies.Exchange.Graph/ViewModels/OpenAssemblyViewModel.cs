@@ -11,7 +11,7 @@ namespace Dependencies.Exchange.Graph.ViewModels
 {
     public class OpenAssemblyViewModel : ObservableObject, IExchangeViewModel<AssemblyExchangeContent>
     {
-        private string searchText;
+        private string searchText = string.Empty;
         private IList<string> availableAssemblies;
         private string selectedAssembly;
         private readonly ISettingServices<GraphSettings> settings;
@@ -19,6 +19,9 @@ namespace Dependencies.Exchange.Graph.ViewModels
         public OpenAssemblyViewModel(ISettingServices<GraphSettings> settings)
         {
             this.settings = settings;
+            availableAssemblies = new List<string>();
+            selectedAssembly = string.Empty;
+
 
             SearchCommand = new Command(async () => await SearchAsync().ConfigureAwait(false), () => !string.IsNullOrEmpty(SearchText));
         }
@@ -45,12 +48,15 @@ namespace Dependencies.Exchange.Graph.ViewModels
             set => Set(ref availableAssemblies, value);
         }
 
-        public Func<Func<Task>, Task> RunAsync { get; set; }
+        public Func<Func<Task>, Task>? RunAsync { get; set; }
 
         public string Title => "Open assembly from Graph Services";
 
         private async Task SearchAsync()
         {
+            if (RunAsync == null)
+                return;
+
             await RunAsync.Invoke(async () =>
             {
                 var services = new AssemblyGraphService(settings.GetSettings());

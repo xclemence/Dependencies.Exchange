@@ -18,7 +18,7 @@ namespace Dependencies.Exchange.Graph
 
         public GraphImportService(ISettingServices<GraphSettings> settings) => this.settings = settings;
 
-        public async Task<AssemblyExchangeContent> ImportAsync(Func<UserControl, IExchangeViewModel<AssemblyExchangeContent>, Task<AssemblyExchangeContent>> showDialog)
+        public async Task<AssemblyExchangeContent?> ImportAsync(Func<UserControl, IExchangeViewModel<AssemblyExchangeContent>, Task<AssemblyExchangeContent>> showDialog)
         {
             if (showDialog is null)
                 throw new ArgumentNullException(nameof(showDialog));
