@@ -13,11 +13,11 @@ namespace Dependencies.Exchange.Graph
 
         public string Version { get; init; } = string.Empty;
 
-        public string Creator { get; init; } = string.Empty;
+        public string? Creator { get; init; }
 
-        public string TargetFramework { get; init; } = string.Empty;
+        public string? TargetFramework { get; init; }
 
-        public string TargetProcessor { get; init; } = string.Empty;
+        public string? TargetProcessor { get; init; }
 
         public bool? IsDebug { get; init; }
 

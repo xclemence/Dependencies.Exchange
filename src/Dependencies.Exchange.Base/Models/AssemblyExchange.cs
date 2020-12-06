@@ -16,11 +16,11 @@ namespace Dependencies.Exchange.Base.Models
 
         public string Version { get; init; } = string.Empty;
 
-        public string Creator { get; init; } = string.Empty;
+        public string? Creator { get; init; }
 
-        public string TargetFramework { get; init; } = string.Empty;
+        public string? TargetFramework { get; init; }
 
-        public string TargetProcessor { get; init; } = string.Empty;
+        public string? TargetProcessor { get; init; }
 
         public bool? IsDebug { get; init; }
 
@@ -31,6 +31,7 @@ namespace Dependencies.Exchange.Base.Models
         public bool IsPartial { get; init; }
 
         public bool IsLocal { get; init; }
+
         public bool HasEntryPoint { get; init; }
 
         public List<string> AssembliesReferenced { get; init; } = new ();
