@@ -4,6 +4,6 @@ namespace Dependencies.Exchange.Graph.Settings
 {
     public class GraphSettings : IExchangeSettings
     {
-        public string ServiceUri { get; set; }
+        public string ServiceUri { get; set; } = string.Empty;
     }
 }

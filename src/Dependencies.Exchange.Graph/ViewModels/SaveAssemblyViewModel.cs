@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Dependencies.Exchange.Base;
 using Dependencies.Exchange.Base.Models;
 using Dependencies.Exchange.Graph.Fwk;
@@ -23,7 +22,7 @@ namespace Dependencies.Exchange.Graph.ViewModels
 
         public bool CanValidate => true;
 
-        public Func<Func<Task>, Task> RunAsync { get; set; }
+        public Func<Func<Task>, Task>? RunAsync { get; set; }
 
         public string Title => "Export assembly";
 

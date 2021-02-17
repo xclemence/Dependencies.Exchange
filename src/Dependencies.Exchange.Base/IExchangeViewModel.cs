@@ -7,7 +7,7 @@ namespace Dependencies.Exchange.Base
     {
         bool CanValidate { get; }
 
-        Func<Func<Task>, Task> RunAsync { get; set; }
+        Func<Func<Task>, Task>? RunAsync { get; set; }
 
         string Title { get; }
 

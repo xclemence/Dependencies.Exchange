@@ -7,8 +7,8 @@ namespace Dependencies.Exchange.Base.Extensions
     {
         public static void Deconstruct(this AssemblyExchangeContent assemblyContent,  out AssemblyExchange assembly, out IList<AssemblyExchange> dependencies)
         {
-            assembly = assemblyContent?.Assembly;
-            dependencies = assemblyContent?.Dependencies;
+            assembly = assemblyContent.Assembly;
+            dependencies = assemblyContent.Dependencies;
         }
     }
 }

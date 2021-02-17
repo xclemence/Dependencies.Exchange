@@ -13,7 +13,7 @@ namespace Dependencies.Exchange.File
         public string Name => "File";
         public bool IsReady => true;
 
-        public Task<AssemblyExchangeContent> ImportAsync(Func<UserControl, IExchangeViewModel<AssemblyExchangeContent>, Task<AssemblyExchangeContent>> _)
+        public Task<AssemblyExchangeContent?> ImportAsync(Func<UserControl, IExchangeViewModel<AssemblyExchangeContent>, Task<AssemblyExchangeContent>> _)
         {
             var openFileDialog = new OpenFileDialog()
             {
@@ -24,12 +24,12 @@ namespace Dependencies.Exchange.File
             var result = openFileDialog.ShowDialog();
 
             if (!(result ?? false))
-                return Task.FromResult<AssemblyExchangeContent>(default);
+                return Task.FromResult<AssemblyExchangeContent?>(default);
 
             var serializeObject = System.IO.File.ReadAllText(openFileDialog.FileName);
             var model = JsonConvert.DeserializeObject<ExportModel>(serializeObject);
 
-            return Task.FromResult(new AssemblyExchangeContent { Assembly = model.Assembly, Dependencies = model.Dependencies });
+            return Task.FromResult<AssemblyExchangeContent?>(new AssemblyExchangeContent { Assembly = model.Assembly, Dependencies = model.Dependencies });
         }
     }
 }

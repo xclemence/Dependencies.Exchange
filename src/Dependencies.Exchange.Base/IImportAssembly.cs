@@ -7,6 +7,6 @@ namespace Dependencies.Exchange.Base
 {
     public interface IImportAssembly : IExchangeSevice
     {
-        Task<AssemblyExchangeContent> ImportAsync(Func<UserControl, IExchangeViewModel<AssemblyExchangeContent>, Task<AssemblyExchangeContent>> showDialog);
+        Task<AssemblyExchangeContent?> ImportAsync(Func<UserControl, IExchangeViewModel<AssemblyExchangeContent>, Task<AssemblyExchangeContent>> showDialog);
     }
 }
