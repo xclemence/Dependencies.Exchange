@@ -4,5 +4,7 @@
     {
         bool IsReady { get; }
         string Name { get; }
+
+        string Version { get; }
     }
 }

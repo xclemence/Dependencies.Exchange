@@ -16,6 +16,8 @@ namespace Dependencies.Exchange.Graph
         public string Name => "Graph";
         public bool IsReady => true;
 
+        public string Version => typeof(GraphImportService).Assembly.GetName().Version?.ToString() ?? string.Empty;
+
         public GraphImportService(ISettingServices<GraphSettings> settings) => this.settings = settings;
 
         public async Task<AssemblyExchangeContent?> ImportAsync(Func<UserControl, IExchangeViewModel<AssemblyExchangeContent>, Task<AssemblyExchangeContent>> showDialog)

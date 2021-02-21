@@ -13,6 +13,8 @@ namespace Dependencies.Exchange.File
         public string Name => "File";
         public bool IsReady => true;
 
+        public string Version => typeof(FileImportService).Assembly.GetName().Version?.ToString() ?? string.Empty;
+
         public Task<AssemblyExchangeContent?> ImportAsync(Func<UserControl, IExchangeViewModel<AssemblyExchangeContent>, Task<AssemblyExchangeContent>> _)
         {
             var openFileDialog = new OpenFileDialog()

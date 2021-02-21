@@ -21,6 +21,8 @@ namespace Dependencies.Exchange.File
         public string Name => "File";
         public bool IsReady => true;
 
+        public string Version => typeof(FileExportService).Assembly.GetName().Version?.ToString() ?? string.Empty;
+
         public Task<bool> ExportAsync(AssemblyExchange assembly,
                                       IList<AssemblyExchange> dependencies,
                                       Func<UserControl, IExchangeViewModel<bool>, Task<bool>> _)

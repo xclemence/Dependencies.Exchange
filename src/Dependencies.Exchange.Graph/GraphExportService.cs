@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using Dependencies.Exchange.Base;
@@ -18,6 +17,8 @@ namespace Dependencies.Exchange.Graph
 
         public string Name => "Graph";
         public bool IsReady => settings.GetSettings().IsValide();
+
+        public string Version => typeof(GraphExportService).Assembly.GetName().Version?.ToString() ?? string.Empty;
 
         public GraphExportService(ISettingServices<GraphSettings> settings) => this.settings = settings;
 
